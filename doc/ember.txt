@@ -1,0 +1,109 @@
+*ember.txt*         Plugin for working with Ember CLI Applications
+
+Author: Alex LaFroscia <alex@lafroscia.com>
+License: Same terms as Vim itself (see |license|)
+
+====================================================================
+CONTENTS                                            *EmberCliContents*
+
+    1. Usage ................ |EmberCliUsage|
+    2. Commands ............. |EmberCliCommands|
+    3. Bugs ................. |EmberCliBugs|
+    4. Contributing ......... |EmberCliContributing|
+    5. Information .......... |EmberCliInformation|
+        a. Ember CLI
+        b. Changelog
+        c. Credits
+
+====================================================================
+Section 1: Usage                                       *EmberCliUsage*
+
+
+====================================================================
+Section 2: Commands                                   *ember-commands*
+
+:EmberGen [type] [name]                              *ember-:EmberGen*
+
+        Generate a new [type] with a file name of [name].  For
+        example, if you ran:
+>
+        EmberGen controller my-controller
+<
+        You would end up with a new controller called "my-controller",
+        as well as the corresponding test files.
+
+:EmberDestroy [type] [name]                      *ember-:EmberDestroy*
+
+        Destroy the [type] of name [name].  For example, if you ran:
+>
+        EmberDestroy controller my-controller
+<
+        The controller called "my-controller" would be destroyed, as
+        well as the corresponding test files.
+
+:EmberTest                                          *ember-:EmberTest*
+
+        Run the tests for the project using "ember test"
+
+:EmberTest!                                        *ember-:EmberTest!*
+
+        Run the tests for the project using "ember test --serve"
+
+:EmberInstall [addon-name]                       *ember-:EmberInstall*
+
+        Install an Ember addon using "ember install [addon-name]"
+
+:NpmInstall                                        *ember-:NpmInstall*
+
+        Install project dependencies using "npm install"
+
+====================================================================
+Section 3: Bugs                                         *EmberCliBugs*
+
+If you come across any behavior that doesn't seem expected, or you
+have some suggestions on ways that this plugin can be improved,
+don't hesitate to post a bug report on the Github Issues tracker,
+which you can find here:
+
+https://github.com/alexlafroscia/vim-ember-cli/issues
+
+Please check for an existing bug before filing a new one.  Issues
+with related plugins should be directed to the original authors.
+
+====================================================================
+Section 4: Contributing                         *EmberCliContributing*
+
+If you're interested in getting involved with the development of
+this plugin, please check out the issue tracker at
+
+https://github.com/alexlafroscia/vim-ember-cli/issues
+
+If you are looking for a feature or want to start on one yourself,
+please get in touch with me to so I can make sure that someone else
+hasn't started on the same idea already!
+
+====================================================================
+Section 5: Information                           *EmberCliInformation*
+
+--------------------------------------------------------------------
+Section 5a: Ember CLI
+
+For more information about the Ember CLI tool, check out the docs at
+
+http://www.ember-cli.com
+
+--------------------------------------------------------------------
+Section 5b: Changelog
+
+You can find a changelog for this plugin at
+
+https://github.com/alexlafroscia/vim-ember-cli/blob/master/CHANGELOG.md
+
+--------------------------------------------------------------------
+Section 5c: Credits
+
+Big thanks to Tim Pope for his many amazing Vim plugins, especially
+the vim-rails plugin that has been a big inspiration on this one.
+
+ vim:tw=78:ts=8:ft=help:norl:
+
