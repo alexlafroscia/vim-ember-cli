@@ -12,7 +12,7 @@ CONTENTS                                              *ember-contents*
     4. Contributing ......... |ember-contributing|
     5. Information .......... |ember-info|
     6. Changelog ............ |ember-changelog|
-    7. Credits ........    .. |ember-credits|
+    7. Credits .............. |ember-credits|
 
 ====================================================================
 Section 1: Usage                                         *ember-usage*
@@ -26,7 +26,7 @@ Section 2: Commands                                   *ember-commands*
         Generate a new [type] with a file name of [name].  For
         example, if you ran:
 >
-        EmberGen controller my-controller
+        :EmberGen controller my-controller
 <
         You would end up with a new controller called "my-controller",
         as well as the corresponding test files.
@@ -35,10 +35,14 @@ Section 2: Commands                                   *ember-commands*
 
         Destroy the [type] of name [name].  For example, if you ran:
 >
-        EmberDestroy controller my-controller
+        :EmberDestroy controller my-controller
 <
         The controller called "my-controller" would be destroyed, as
         well as the corresponding test files.
+
+:EmberServe                                        *ember-:EmberServe*
+
+        Run the "ember server" command
 
 :EmberTest                                          *ember-:EmberTest*
 
@@ -95,6 +99,9 @@ http://www.ember-cli.com
 
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
+
+0.0.2
+  - Adds :EmberServe command
 
 0.0.1
   - Basic :Ember____ commands with auto-completion
