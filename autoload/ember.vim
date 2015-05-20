@@ -8,11 +8,6 @@ let g:autoloaded_ember = 1
 
 " Utility Functions {{{1
 
-let s:types_to_directories = {
-  \ 'controller': 'controllers',
-  \ 'template': 'templates',
-  \ }
-
 function! s:makeAndSwitch(command, ...)
   let default_makeprg = &makeprg
   let args = join(a:000, " ")
@@ -35,12 +30,59 @@ function! s:makeAndSwitch(command, ...)
   let &makeprg = default_makeprg
 endfunction
 
+let s:generator_types = [
+  \ 'acceptance-test',
+  \ 'adapter',
+  \ 'adapter-test',
+  \ 'addon',
+  \ 'addon-import',
+  \ 'app',
+  \ 'blueprint',
+  \ 'component',
+  \ 'component-addon',
+  \ 'component-test',
+  \ 'controller',
+  \ 'controller-test',
+  \ 'helper',
+  \ 'helper-addon',
+  \ 'helper-test',
+  \ 'http-mock',
+  \ 'http-proxy',
+  \ 'in-repo-addon',
+  \ 'initializer',
+  \ 'initializer-addon',
+  \ 'initializer-test',
+  \ 'lib',
+  \ 'mixin',
+  \ 'mixin-test',
+  \ 'model',
+  \ 'model-test',
+  \ 'resource',
+  \ 'route',
+  \ 'route-test',
+  \ 'serializer',
+  \ 'serializer-test',
+  \ 'server',
+  \ 'service',
+  \ 'service-test',
+  \ 'template',
+  \ 'test-helper',
+  \ 'transform',
+  \ 'transform-test',
+  \ 'util',
+  \ 'util-test',
+  \ 'view',
+  \ 'view-test'
+  \ ]
+
+" Break getting the generator types out into a separate function so that it can
+" eventually be made dynamic without having to re-write other parts of the code
 function! s:get_generator_types()
-  return ['controller', 'route', 'component', 'template']
+  return s:generator_types
 endfunction
 
 function! s:get_directory_for_type(type)
-  return get(s:types_to_directories, a:type, '')
+  return a:type . 's'
 endfunction
 
 function! s:get_files_for_type(type)
