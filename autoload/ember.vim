@@ -8,6 +8,11 @@ let g:autoloaded_ember = 1
 
 " Utility Functions {{{1
 
+let s:types_to_directories = {
+  \ 'controller': 'controllers',
+  \ 'template': 'templates',
+  \ }
+
 function! s:makeAndSwitch(command, ...)
   let default_makeprg = &makeprg
   let args = join(a:000, " ")
@@ -30,13 +35,22 @@ function! s:makeAndSwitch(command, ...)
   let &makeprg = default_makeprg
 endfunction
 
-function! ember#get_types()
+function! s:get_generator_types()
   return ['controller', 'route', 'component', 'template']
 endfunction
 
-function! ember#get_names_for_type(type)
-  let files = glob(b:ember_root . '/' . a:type . '/**/*.js')
-  return files
+function! s:get_directory_for_type(type)
+  return get(s:types_to_directories, a:type, '')
+endfunction
+
+function! s:get_files_for_type(type)
+  let path = b:ember_root . '/app/' . s:get_directory_for_type(a:type)
+  let files = split(globpath(path, '**/*.js'), '\n')
+  let relative_files = []
+  for file in files
+    let relative_files += [file[strlen(path . '/') : -strlen('.js') - 1]]
+  endfor
+  return relative_files
 endfunction
 
 " Filter a list for completion results | Shamelessly borrowed from rails.vim
@@ -102,20 +116,18 @@ endfunction
 " Completion Functions {{{1
 
 function! ember#complete_class(ArgLead, CmdLine, CursorPos)
-  let types = ember#get_types()
+  let types = s:get_generator_types()
   return s:completion_filter(types, a:ArgLead)
 endfunction
 
 function! ember#complete_class_and_name(ArgLead, CmdLine, CursorPos)
-  echo a:ArgLead
-  let types = ember#get_types()
-  echo a:CmdLine
-  let cmd = get(split(a:CmdLine, ' '), 1, '')
-  echo cmd
-  if index(types, cmd) > 0
-    return ember#get_names_for_type()
+  let types = s:get_generator_types()
+  let type = get(split(a:CmdLine, ' '), 1, '')
+  if index(types, type) >= 0
+    let files = s:get_files_for_type(type)
+    return s:completion_filter(files, a:ArgLead)
   endif
-  return ember#get_types()
+  return s:completion_filter(types, a:ArgLead)
 endfunction
 
 " }}}1
