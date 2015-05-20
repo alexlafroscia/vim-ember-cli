@@ -33,3 +33,5 @@ Start the ember server
 `:EmberTest`
 
 Run the test suite
+
+See the [docs](https://github.com/alexlafroscia/vim-ember-cli/blob/master/doc/ember.txt) for more examples and an overview of all possible commands.
