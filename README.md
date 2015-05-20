@@ -1,4 +1,4 @@
-# ember-cli-vim
+# vim-ember-cli
 Vim Plugin for the Ember CLI
 
 It's pretty common to need to jump between the command line and your editor when doing development on Ember CLI applications, whether you're jumping to a generator or running your test suite.  This plugin provides some nice shortcuts for common Ember CLI tasks, and integrates with Projectionist to allow you to quickly jump between source and test files.
