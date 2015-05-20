@@ -44,6 +44,10 @@ Section 2: Commands                                   *ember-commands*
 
         Run the "ember server" command
 
+:EmberBuild                                        *ember-:EmberBuild*
+
+        Run the "ember build" command
+
 :EmberTest                                          *ember-:EmberTest*
 
         Run the tests for the project using "ember test"

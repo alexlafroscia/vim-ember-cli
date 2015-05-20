@@ -202,6 +202,10 @@ function! ember#Server(...)
   call s:makeAndSwitch('ember server')
 endfunction
 
+function! ember#Build(...)
+  call s:makeAndSwitch('ember build')
+endfunction
+
 function! ember#InstallAddon(name)
   call s:makeAndSwitch('ember install', a:name)
 endfunction
