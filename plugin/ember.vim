@@ -29,7 +29,8 @@ endif
 " Globally Available Public API {{{1
 command -nargs=+ -complete=customlist,ember#complete_class EmberGen call ember#Generate(<f-args>)
 command -nargs=+ -complete=customlist,ember#complete_class_and_name EmberDestroy call ember#Destroy(<f-args>)
-command -nargs=0 -bang -complete=customlist,ember#complete_class EmberTest call ember#Test(<bang>0)
+command -nargs=0 -bang EmberTest call ember#Test(<bang>0)
+command -nargs=0 EmberServe call ember#Server()
 command -nargs=1 -complete=customlist,ember#complete_class EmberInstall call ember#InstallAddon(<f-args>)
 command -nargs=0 -complete=customlist,ember#complete_class NpmInstall call ember#NpmInstall()
 " }}}1
