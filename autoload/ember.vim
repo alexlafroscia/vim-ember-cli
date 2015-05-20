@@ -81,10 +81,14 @@ function! s:get_generator_types()
   return s:generator_types
 endfunction
 
+" Given a type, return the directory name associated with it
 function! s:get_directory_for_type(type)
   return a:type . 's'
 endfunction
 
+" Given a type, return a list of the names of all the files of that type
+"   Example: arg -> 'controller'
+"   Return:  ['users/user']
 function! s:get_files_for_type(type)
   let path = b:ember_root . '/app/' . s:get_directory_for_type(a:type)
   let files = split(globpath(path, '**/*.js'), '\n')
@@ -157,11 +161,14 @@ endfunction
 " }}}1
 " Completion Functions {{{1
 
+" Completion function for Ember types
 function! ember#complete_class(ArgLead, CmdLine, CursorPos)
   let types = s:get_generator_types()
   return s:completion_filter(types, a:ArgLead)
 endfunction
 
+" Completion function for Ember types and, if the prompt already contains the
+" type, the file names associated with that type
 function! ember#complete_class_and_name(ArgLead, CmdLine, CursorPos)
   let types = s:get_generator_types()
   let type = get(split(a:CmdLine, ' '), 1, '')

@@ -1,6 +1,27 @@
-# Ember Testing (QUnit)
-snippet embertest "New test case for Ember" b
-test('${1:Test Description}', function(assert) {
-  ${0://Tests here...}
+#####################################################################
+##                          Common Usage                           ##
+#####################################################################
+
+snippet extend "Extend an Ember Object"
+${1:Ember.${2:Object}}.extend({
+	${0}
 });
 endsnippet
+
+snippet create "Create an Ember Object"
+${1:Ember.${2:Object}}.create({
+	${0}
+});
+endsnippet
+
+#####################################################################
+##                      Ember Testing (QUnit)                      ##
+#####################################################################
+
+snippet test "New QUnit test case" b
+test('${1:Test Description}', function(assert) {
+	${0://Tests here...}
+});
+endsnippet
+
+
