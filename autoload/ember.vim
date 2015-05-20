@@ -19,6 +19,8 @@ function! s:makeAndSwitch(command, ...)
     let &makeprg = a:command . " " . args
   endif
 
+  echom &makeprg
+
   " Execute the command
   if exists(':Make') == 2
     exe 'Make'
@@ -199,11 +201,19 @@ function! ember#Test(bang, ...)
 endfunction
 
 function! ember#Server(...)
-  call s:makeAndSwitch('ember server')
+  if len(a:000)
+    call s:makeAndSwitch('ember server', join(a:000, ' '))
+  else
+    call s:makeAndSwitch('ember server')
+  endif
 endfunction
 
 function! ember#Build(...)
-  call s:makeAndSwitch('ember build')
+  if len(a:000)
+    call s:makeAndSwitch('ember build', join(a:000, ' '))
+  else
+    call s:makeAndSwitch('ember build')
+  endif
 endfunction
 
 function! ember#InstallAddon(name)

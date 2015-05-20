@@ -30,8 +30,8 @@ endif
 command -nargs=+ -complete=customlist,ember#complete_class EmberGen call ember#Generate(<f-args>)
 command -nargs=+ -complete=customlist,ember#complete_class_and_name EmberDestroy call ember#Destroy(<f-args>)
 command -nargs=0 -bang EmberTest call ember#Test(<bang>0)
-command -nargs=0 EmberServe call ember#Server()
-command -nargs=0 EmberBuild call ember#Build()
+command -nargs=* EmberServe call ember#Server(<f-args>)
+command -nargs=* EmberBuild call ember#Build(<f-args>)
 command -nargs=1 -complete=customlist,ember#complete_class EmberInstall call ember#InstallAddon(<f-args>)
 command -nargs=0 -complete=customlist,ember#complete_class NpmInstall call ember#NpmInstall()
 " }}}1

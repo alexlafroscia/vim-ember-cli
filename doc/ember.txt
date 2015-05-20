@@ -42,11 +42,19 @@ Section 2: Commands                                   *ember-commands*
 
 :EmberServe                                        *ember-:EmberServe*
 
-        Run the "ember server" command
+        Run the "ember server" command. You can pass additional
+        arguments just like with the regular CLI. Example:
+>
+        :EmberServe --port 8080
+<
 
 :EmberBuild                                        *ember-:EmberBuild*
 
-        Run the "ember build" command
+        Run the "ember build" command. You can pass additional
+        arguments just like with the regular CLI. Example:
+>
+        :EmberBuild -dev
+<
 
 :EmberTest                                          *ember-:EmberTest*
 
@@ -103,6 +111,11 @@ http://www.ember-cli.com
 
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
+
+Latest
+  - Adds :EmberBuild command
+  - Allows additional options to be passed to the :EmberServe and
+    :EmberBuild commands
 
 0.0.2
   - Adds :EmberServe command
