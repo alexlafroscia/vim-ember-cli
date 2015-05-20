@@ -105,5 +105,4 @@ Section 5c: Credits
 Big thanks to Tim Pope for his many amazing Vim plugins, especially
 the vim-rails plugin that has been a big inspiration on this one.
 
- vim:tw=78:ts=8:ft=help:norl:
-
+vim:tw=78:ts=8:ft=help:norl:

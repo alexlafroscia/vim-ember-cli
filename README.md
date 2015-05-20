@@ -24,6 +24,3 @@ If you don't install either of the above plugins, that's OK, but this features o
 
 Use `:A` to jump from a source to test file or vice versa.
 
-## Credits
-
-Enormous thanks goes out to [Tim Pope](https://github.com/tpope), maker of many a fantastic Vim plugin, in particular the [`vim-rails`](https://github.com/tpope/vim-rails) from which a lot of inspiration for this plugin was gained.
