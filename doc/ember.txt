@@ -1,22 +1,21 @@
-*ember.txt*         Plugin for working with Ember CLI Applications
+*ember.txt*             Plugin for working with Ember CLI Applications
 
 Author: Alex LaFroscia <alex@lafroscia.com>
 License: Same terms as Vim itself (see |license|)
 
 ====================================================================
-CONTENTS                                            *EmberCliContents*
+CONTENTS                                              *ember-contents*
 
-    1. Usage ................ |EmberCliUsage|
-    2. Commands ............. |EmberCliCommands|
-    3. Bugs ................. |EmberCliBugs|
-    4. Contributing ......... |EmberCliContributing|
-    5. Information .......... |EmberCliInformation|
-        a. Ember CLI
-        b. Changelog
-        c. Credits
+    1. Usage ................ |ember-usage|
+    2. Commands ............. |ember-commands|
+    3. Bugs ................. |ember-bugs|
+    4. Contributing ......... |ember-contributing|
+    5. Information .......... |ember-info|
+    6. Changelog ............ |ember-changelog|
+    7. Credits ........    .. |ember-credits|
 
 ====================================================================
-Section 1: Usage                                       *EmberCliUsage*
+Section 1: Usage                                         *ember-usage*
 
 
 ====================================================================
@@ -58,7 +57,7 @@ Section 2: Commands                                   *ember-commands*
         Install project dependencies using "npm install"
 
 ====================================================================
-Section 3: Bugs                                         *EmberCliBugs*
+Section 3: Bugs                                           *ember-bugs*
 
 If you come across any behavior that doesn't seem expected, or you
 have some suggestions on ways that this plugin can be improved,
@@ -71,7 +70,7 @@ Please check for an existing bug before filing a new one.  Issues
 with related plugins should be directed to the original authors.
 
 ====================================================================
-Section 4: Contributing                         *EmberCliContributing*
+Section 4: Contributing                           *ember-contributing*
 
 If you're interested in getting involved with the development of
 this plugin, please check out the issue tracker at
@@ -82,8 +81,10 @@ If you are looking for a feature or want to start on one yourself,
 please get in touch with me to so I can make sure that someone else
 hasn't started on the same idea already!
 
+You can check out a list of contributors at |ember-contributors|.
+
 ====================================================================
-Section 5: Information                           *EmberCliInformation*
+Section 5: Information                                    *ember-info*
 
 --------------------------------------------------------------------
 Section 5a: Ember CLI
@@ -92,17 +93,22 @@ For more information about the Ember CLI tool, check out the docs at
 
 http://www.ember-cli.com
 
---------------------------------------------------------------------
-Section 5b: Changelog
+====================================================================
+Section 6: Changelog                                 *ember-changelog*
 
-You can find a changelog for this plugin at
+0.0.1
+  - Basic :Ember____ commands with auto-completion
 
-https://github.com/alexlafroscia/vim-ember-cli/blob/master/CHANGELOG.md
+====================================================================
+Section 7: Credits                                     *ember-credits*
 
---------------------------------------------------------------------
-Section 5c: Credits
+Contributors (chronological):                     *ember-contributors*
 
-Big thanks to Tim Pope for his many amazing Vim plugins, especially
-the vim-rails plugin that has been a big inspiration on this one.
+  - Alex LaFroscia
+
+Inspiration:
+
+  - Tim Pope (rails-vim) https://github.com/tpope/vim-rails
+  - Fatih Arslan (vim-go) https://github.com/fatih/vim-go
 
 vim:tw=78:ts=8:ft=help:norl:
