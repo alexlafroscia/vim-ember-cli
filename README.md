@@ -18,17 +18,25 @@ You don't have to install the above plugins, but the features that require them 
 
 ## Examples
 
+### `:EmberGen`
+
 `:EmberGen controller my-controller`
 
-Generate a new controller called "my-controller"
+Generate a new controller called "my-controller".  You can even tab-complete the names of directories in the creation path.
+
+### `:EmberDest`
 
 `:EmberDestroy controller my<TAB>`
 
 Destroy the controller called "my-controller" (autocompletes file names)
 
+### `:EmberServe`
+
 `:EmberServe`
 
 Start the ember server
+
+### `:EmberTest`
 
 `:EmberTest`
 
