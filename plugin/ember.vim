@@ -28,7 +28,7 @@ endif
 " }}}1
 " Globally Available Public API {{{1
 command -nargs=+ -complete=customlist,ember#complete_class EmberGen call ember#Generate(<f-args>)
-command -nargs=+ -complete=customlist,ember#complete_class_and_name EmberDestroy call ember#Destroy(<f-args>)
+command -nargs=+ -complete=customlist,ember#complete_class_and_file EmberDestroy call ember#Destroy(<f-args>)
 command -nargs=0 -bang EmberTest call ember#Test(<bang>0)
 command -nargs=* EmberServe call ember#Server(<f-args>)
 command -nargs=* EmberBuild call ember#Build(<f-args>)

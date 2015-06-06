@@ -166,12 +166,14 @@ endfunction
 " Completion function for Ember types
 function! ember#complete_class(ArgLead, CmdLine, CursorPos)
   let types = s:get_generator_types()
-  return s:completion_filter(types, a:ArgLead)
+  if 2 >= len(split(a:CmdLine, ' ')) && !empty(a:ArgLead)
+    return s:completion_filter(types, a:ArgLead)
+  endif
 endfunction
 
 " Completion function for Ember types and, if the prompt already contains the
 " type, the file names associated with that type
-function! ember#complete_class_and_name(ArgLead, CmdLine, CursorPos)
+function! ember#complete_class_and_file(ArgLead, CmdLine, CursorPos)
   let types = s:get_generator_types()
   let type = get(split(a:CmdLine, ' '), 1, '')
   if index(types, type) >= 0
@@ -179,6 +181,11 @@ function! ember#complete_class_and_name(ArgLead, CmdLine, CursorPos)
     return s:completion_filter(files, a:ArgLead)
   endif
   return s:completion_filter(types, a:ArgLead)
+endfunction
+
+" Completion function for Ember types and directories
+function! ember#complete_class_and_directory(ArgLead, CmdLine, CursorPos)
+  let types = s:get_generator_types()
 endfunction
 
 " }}}1
