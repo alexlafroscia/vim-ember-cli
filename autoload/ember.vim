@@ -101,6 +101,24 @@ function! s:get_files_for_type(type)
   return relative_files
 endfunction
 
+" Given a type, return a list of the names of all the files of that type
+"   Example: arg -> 'controller'
+"   Return:  ['users/user']
+function! s:get_directory_path_for_type(type)
+  let path = b:ember_root . '/app/' . s:get_directory_for_type(a:type)
+  let files = split(globpath(path, '**/*.js'), '\n')
+  let relative_files = []
+  for file in files
+    let filename = file[strlen(path . '/') : -strlen('.js') - 1]
+    let index = strridx(filename, '/')
+    if index != -1
+      let filename = filename[filename : index - 1]
+      let relative_files += [filename]
+    endif
+  endfor
+  return relative_files
+endfunction
+
 " Filter a list for completion results | Shamelessly borrowed from rails.vim
 " https://github.com/tpope/vim-rails/blob/12addfcaf5ce97632adbb756bea76cb970dea002/autoload/rails.vim#L2522-L2543
 function! s:completion_filter(results, A, ...) abort
@@ -186,6 +204,12 @@ endfunction
 " Completion function for Ember types and directories
 function! ember#complete_class_and_directory(ArgLead, CmdLine, CursorPos)
   let types = s:get_generator_types()
+  let type = get(split(a:CmdLine, ' '), 1, '')
+  if index(types, type) >= 0
+    let files = s:get_directory_path_for_type(type)
+    return s:completion_filter(files, a:ArgLead)
+  endif
+  return s:completion_filter(types, a:ArgLead)
 endfunction
 
 " }}}1
