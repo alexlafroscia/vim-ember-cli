@@ -32,6 +32,6 @@ command -nargs=+ -complete=customlist,ember#complete_class_and_file EmberDestroy
 command -nargs=0 -bang EmberTest call ember#Test(<bang>0)
 command -nargs=* EmberServe call ember#Server(<f-args>)
 command -nargs=* EmberBuild call ember#Build(<f-args>)
-command -nargs=1 -complete=customlist,ember#complete_class EmberInstall call ember#InstallAddon(<f-args>)
-command -nargs=0 -complete=customlist,ember#complete_class NpmInstall call ember#NpmInstall()
+command -nargs=1 EmberInstall call ember#InstallAddon(<f-args>)
+command -nargs=0 NpmInstall call ember#NpmInstall()
 " }}}1
