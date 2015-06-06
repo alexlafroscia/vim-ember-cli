@@ -112,6 +112,9 @@ http://www.ember-cli.com
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
 
+0.2.0
+  - Dynamically generate list of blueprints
+
 0.1.0
   - Adds :EmberBuild command
   - Allows additional options to be passed to the :EmberServe and
