@@ -112,10 +112,11 @@ http://www.ember-cli.com
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
 
-Latest
+0.1.0
   - Adds :EmberBuild command
   - Allows additional options to be passed to the :EmberServe and
     :EmberBuild commands
+  - Adds better tab completion for directories while using :EmberGen
 
 0.0.2
   - Adds :EmberServe command
