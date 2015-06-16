@@ -4,12 +4,13 @@
 " Detection {{{1
 
 function! s:EmberCliDetect(...) abort
-  if exists('b:ember_root')
+  if exists('g:ember_root')
     return 1
   endif
   let file = findfile('.ember-cli', '.;')
+  echom file
   if !empty(file) && isdirectory(fnamemodify(file, ':p:h') . '/app')
-    let b:ember_root = fnamemodify(file, ':p:h')
+    let g:ember_root = fnamemodify(file, ':p:h')
     return 1
   endif
 endfunction

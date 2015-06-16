@@ -112,6 +112,9 @@ http://www.ember-cli.com
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
 
+0.2.1
+  - Fix plugin not working on anything other than the first buffer
+
 0.2.0
   - Dynamically generate list of blueprints
 
