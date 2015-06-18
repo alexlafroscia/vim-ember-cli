@@ -8,7 +8,6 @@ function! s:EmberCliDetect(...) abort
     return 1
   endif
   let file = findfile('.ember-cli', '.;')
-  echom file
   if !empty(file) && isdirectory(fnamemodify(file, ':p:h') . '/app')
     let g:ember_root = fnamemodify(file, ':p:h')
     return 1
