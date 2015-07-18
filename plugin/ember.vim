@@ -30,6 +30,7 @@ endif
 command -nargs=+ -complete=customlist,ember#complete_class_and_directory EmberGen call ember#Generate(<f-args>)
 command -nargs=+ -complete=customlist,ember#complete_class_and_file EmberDestroy call ember#Destroy(<f-args>)
 command -nargs=0 -bang EmberTest call ember#Test(<bang>0)
+command -nargs=0 EmberTestModule call ember#TestModule()
 command -nargs=* EmberServe call ember#Server(<f-args>)
 command -nargs=* EmberBuild call ember#Build(<f-args>)
 command -nargs=1 EmberInstall call ember#InstallAddon(<f-args>)

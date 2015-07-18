@@ -64,6 +64,21 @@ Section 2: Commands                                   *ember-commands*
 
         Run the tests for the project using "ember test --serve"
 
+:EmberModuleTest                              *ember-:EmberTestModule*
+
+        Runs only the test module for the current file.
+        Requires the current buffer to be a test file, and for the
+        file to have an explicitly defined name, like so:
+>
+        import { moduleForModel, test } from 'ember-qunit';
+
+        moduleForModel(model:example', 'Unit | Model | example', {
+          ...
+        });
+<
+        In this example, the name is 'Unit | Model | example'.
+        This should be set by default, but if not, provide one.
+
 :EmberInstall [addon-name]                       *ember-:EmberInstall*
 
         Install an Ember addon using "ember install [addon-name]"
@@ -111,6 +126,9 @@ http://www.ember-cli.com
 
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
+
+0.3.0
+  - Adds :EmberTestModule command for testing a single module
 
 0.2.1
   - Fix plugin not working on anything other than the first buffer
