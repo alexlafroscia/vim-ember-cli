@@ -1,9 +1,7 @@
 # vim-ember-cli
 Vim Plugin for the Ember CLI
 
-It's pretty common to need to jump between the command line and your editor when doing development on Ember CLI applications, whether you're jumping to a generator or running your test suite.  This plugin provides some nice shortcuts for common Ember CLI tasks, and integrates with Projectionist to allow you to quickly jump between source and test files.
-
-All commands attempt to use [Dispatch](https://github.com/tpope/vim-dispatch) to run asynchronously.
+It's pretty common to need to jump between the command line and your editor when doing development on Ember CLI applications.  This plugin provides some nice shortcuts for common Ember CLI tasks and adds tab-completion for file names in your project.
 
 ## Pre-Requisites & Installation
 
@@ -16,30 +14,40 @@ I recommend installing them through [vim-plug](https://github.com/junegunn/vim-p
 
 You don't have to install the above plugins, but the features that require them will be ignored.
 
-## Examples
+## Demo
 
-### `:EmberGen`
+![vim-ember-cli usage demo](http://zippy.gfycat.com/DecentWellinformedEsok.gif)
 
-`:EmberGen controller my-controller`
+## Usage
 
-Generate a new controller called "my-controller".  You can even tab-complete the names of directories in the creation path.
+`vim-ember-cli` can be used to interface with the Ember CLI to execute most of the commands that you would normally need to go to the command for.  In addition, it also provides autocomplete for the `ember generate` and `ember destroy` commands, which isn't available at the command line
 
-### `:EmberDest`
+### Ember Generate
 
-`:EmberDestroy controller my<TAB>`
+```
+:EmberGen <type> <name>
+```
 
-Destroy the controller called "my-controller" (autocompletes file names)
+Generate a new `<type>` with `<name>`.  `<name>` will be auto-completed based on the current structure of your project.  For example, if you want to create a new `controller` called `posts/post/edit` and you already have `posts/post`, then you can tab-complete `p<tab>/p<tab>/edit`.
 
-### `:EmberServe`
+### Ember Destroy
 
-`:EmberServe`
+```
+:EmberDestroy <type> <name>
+```
 
-Start the ember server
+Destroy a `<type>` with `<name>`.  You can use tab-completion to get find files that actually exist in your project, making it much easier to execute that it would be from the command line.
 
-### `:EmberTest`
+### Ember Test
 
-`:EmberTest`
+```
+:EmberTest
+```
 
-Run the test suite
+Run the entire test suite.  Tests are run asynchronously through [`vim-dispatch`](https://github.com/tpope/vim-dispatch).
 
-See the [docs](https://github.com/alexlafroscia/vim-ember-cli/blob/master/doc/ember.txt) for more examples and an overview of all possible commands.
+```
+:EmberTestModule
+```
+
+When run from a buffer containing an Ember test, run only that test.
