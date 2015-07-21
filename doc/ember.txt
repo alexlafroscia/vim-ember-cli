@@ -60,11 +60,13 @@ Section 2: Commands                                   *ember-commands*
 
         Run the tests for the project using "ember test"
 
-:EmberTest!                                        *ember-:EmberTest!*
+        Can also be invoked as
+>
+        :EmberTest!
+<
+        to run the test server instead.
 
-        Run the tests for the project using "ember test --serve"
-
-:EmberModuleTest                              *ember-:EmberTestModule*
+:EmberTestModule                              *ember-:EmberTestModule*
 
         Runs only the test module for the current file.
         Requires the current buffer to be a test file, and for the
@@ -72,7 +74,7 @@ Section 2: Commands                                   *ember-commands*
 >
         import { moduleForModel, test } from 'ember-qunit';
 
-        moduleForModel(model:example', 'Unit | Model | example', {
+        moduleForModel('model:example', 'Unit | Model | example', {
           ...
         });
 <
@@ -109,7 +111,7 @@ this plugin, please check out the issue tracker at
 https://github.com/alexlafroscia/vim-ember-cli/issues
 
 If you are looking for a feature or want to start on one yourself,
-please get in touch with me to so I can make sure that someone else
+please get in touch with me so I can make sure that someone else
 hasn't started on the same idea already!
 
 You can check out a list of contributors at |ember-contributors|.
