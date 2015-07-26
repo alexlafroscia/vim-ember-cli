@@ -132,6 +132,8 @@ Section 6: Changelog                                 *ember-changelog*
 0.3.2
   - Autocomplete directories and file names in generation tab-
     complete
+  - More robust module name detection. Now works in most cases when
+    a module name isn't explicitly set, and with Acceptance tests.
 
 0.3.1
   - Fix controller tab-complete offering only directory paths, not

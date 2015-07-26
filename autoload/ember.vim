@@ -123,6 +123,10 @@ function! s:startswith(string,prefix)
   return strpart(a:string, 0, strlen(a:prefix)) ==# a:prefix
 endfunction
 
+function! s:equal(string1, string2)
+  return a:string1 ==? a:string2
+endfunction
+
 " sub | Shamelessly borrowed from rails.vim
 " https://github.com/tpope/vim-rails/blob/12addfcaf5ce97632adbb756bea76cb970dea002/autoload/rails.vim#L28-L30
 function! s:sub(str,pat,rep)
@@ -159,6 +163,64 @@ function! ember#complete_class_and_file(ArgLead, CmdLine, CursorPos)
 endfunction
 
 " }}}1
+" Helper Functions {{{1
+
+" Returns the module name for a given test file
+" Returns an empty string if no match was found
+function! s:get_module_name(path)
+  let currentLineNumber = 1
+  let maxLineNumber = line('$')
+  let moduleNameNotFound = 1
+
+  while moduleNameNotFound && maxLineNumber >= currentLineNumber
+    let line = getline(currentLineNumber)
+    if s:startswith(line, 'module')
+      let moduleNameNotFound = 0
+      let type = s:get_module_type(line)
+      if s:equal(type, 'module')
+        let moduleName = s:get_module_name_for_acceptance(line)
+      else
+        let moduleName = s:get_module_name_for_unit(line, type)
+      endif
+      return moduleName
+    else
+      let currentLineNumber = currentLineNumber + 1
+    endif
+  endwhile
+  return ''
+endfunction
+
+function! s:get_module_type(line)
+  let indexOfParen = strridx(a:line, '(')
+  let moduleDec = a:line[0 : indexOfParen - 1]
+  return moduleDec
+endfunction
+
+" Get Module Names from Line {{{2
+function! s:get_module_name_for_unit(line, type)
+  let moduleName = matchstr(a:line, '\([''"]\)\(.\{-}\)\1', 0, 3)
+  if s:equal(moduleName, '')
+    let moduleName = matchstr(a:line, '\([''"]\)\(.\{-}\)\1', 0, 1)
+    if s:equal(a:type, 'moduleForComponent')
+      " If the test is for a component, add 'component:' before the read name
+      " Also strip off the quotes and add our own, so that we don't end up with
+      " mis-matched quotation
+      let moduleName = "'component:" . moduleName[1 : len(moduleName) - 2] . "'"
+    endif
+    if s:equal(a:type, 'moduleForModel')
+      " Ditto, but for models
+      let moduleName = "'model:" . moduleName[1 : len(moduleName) - 2] . "'"
+    endif
+  endif
+  return moduleName
+endfunction
+
+function! s:get_module_name_for_acceptance(line)
+  return matchstr(a:line, '\([''"]\)\(.\{-}\)\1', 0, 1)
+endfunction
+" }}}2
+
+" }}}1
 " User Functions {{{1
 
 function! ember#Generate(type, name)
@@ -181,7 +243,7 @@ endfunction
 function! ember#TestModule()
   let currentPath = expand('%:p')
   if currentPath =~ g:ember_root . '/tests/'
-    let moduleName = ember#GetModuleForTestFile(currentPath)
+    let moduleName = s:get_module_name(currentPath)
     if moduleName ==? ''
       " Can we infer the module name from the file name?
       echom 'Could not find module name; make sure it is set'
@@ -191,26 +253,6 @@ function! ember#TestModule()
   else
     echom 'Current buffer is not an Ember test'
   endif
-endfunction
-
-" Returns the module name for a given test file
-" Returns an empty string if no match was found
-function! ember#GetModuleForTestFile(path)
-  let currentLineNumber = 1
-  let maxLineNumber = line('$')
-  let moduleNameNotFound = 1
-
-  while moduleNameNotFound && maxLineNumber >= currentLineNumber
-    let line = getline(currentLineNumber)
-    if s:startswith(line, 'module')
-      let moduleNameNotFound = 0
-      let moduleName = matchstr(line, '\([''"]\)\(.\{-}\)\1', 0, 3)
-      return moduleName
-    else
-      let currentLineNumber = currentLineNumber + 1
-    endif
-  endwhile
-  return ''
 endfunction
 
 function! ember#Server(...)
