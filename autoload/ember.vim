@@ -167,7 +167,7 @@ endfunction
 
 " Returns the module name for a given test file
 " Returns an empty string if no match was found
-function! s:get_module_name(path)
+function! ember#get_module_name()
   let currentLineNumber = 1
   let maxLineNumber = line('$')
   let moduleNameNotFound = 1
@@ -243,7 +243,7 @@ endfunction
 function! ember#TestModule()
   let currentPath = expand('%:p')
   if currentPath =~ g:ember_root . '/tests/'
-    let moduleName = s:get_module_name(currentPath)
+    let moduleName = ember#get_module_name()
     if moduleName ==? ''
       " Can we infer the module name from the file name?
       echom 'Could not find module name; make sure it is set'

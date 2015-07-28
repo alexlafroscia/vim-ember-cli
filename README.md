@@ -1,4 +1,7 @@
 # vim-ember-cli
+
+[![Build Status](https://travis-ci.org/alexlafroscia/vim-ember-cli.svg)](https://travis-ci.org/alexlafroscia/vim-ember-cli)
+
 Vim Plugin for the Ember CLI
 
 It's pretty common to need to jump between the command line and your editor when doing development on Ember CLI applications.  This plugin provides some nice shortcuts for common Ember CLI tasks and adds tab-completion for file names in your project.
