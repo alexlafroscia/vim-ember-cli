@@ -142,14 +142,6 @@ endfunction
 " }}}1
 " Completion Functions {{{1
 
-" Completion function for Ember types
-function! ember#complete_class(ArgLead, CmdLine, CursorPos)
-  let types = ember#get_blueprints()
-  if 2 >= len(split(a:CmdLine, ' ')) && !empty(a:ArgLead)
-    return s:completion_filter(types, a:ArgLead)
-  endif
-endfunction
-
 " Completion function for Ember types and, if the prompt already contains the
 " type, the file names associated with that type
 function! ember#complete_class_and_file(ArgLead, CmdLine, CursorPos)
