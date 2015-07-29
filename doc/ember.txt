@@ -129,6 +129,9 @@ http://www.ember-cli.com
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
 
+0.4.0
+  - Add test setup
+
 0.3.2
   - Autocomplete directories and file names in generation tab-
     complete
