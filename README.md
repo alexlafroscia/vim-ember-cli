@@ -1,4 +1,7 @@
 # vim-ember-cli
+
+[![Build Status](https://travis-ci.org/alexlafroscia/vim-ember-cli.svg)](https://travis-ci.org/alexlafroscia/vim-ember-cli)
+
 Vim Plugin for the Ember CLI
 
 It's pretty common to need to jump between the command line and your editor when doing development on Ember CLI applications.  This plugin provides some nice shortcuts for common Ember CLI tasks and adds tab-completion for file names in your project.
@@ -51,3 +54,9 @@ Run the entire test suite.  Tests are run asynchronously through [`vim-dispatch`
 ```
 
 When run from a buffer containing an Ember test, run only that test.
+
+## Contributing
+
+To aid in the development of this plugin, I'm using [RSpec](http://rspec.info) and [Vimrunner](https://github.com/AndrewRadev/vimrunner) to verify its functionality.  Pull requests are welcome, but tests must be included! You can see more information about contributing in the help docs.
+
+The information that I used to start my test setup can be found [here](http://mudge.name/2012/04/18/testing-vim-plugins-on-travis-ci-with-rspec-and-vimrunner.html).  A big thanks goes out to [Paul Mucur](http://mudge.name) for writing it.
