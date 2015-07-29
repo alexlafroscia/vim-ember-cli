@@ -1,29 +1,13 @@
 " plugin/ember.vim
 " Author: Alex LaFroscia
 
-" Detection {{{1
-
-function! s:EmberCliDetect(...) abort
-  if exists('g:ember_root')
-    return 1
-  endif
-  let file = findfile('.ember-cli', '.;')
-  if !empty(file) && isdirectory(fnamemodify(file, ':p:h') . '/app')
-    let g:ember_root = fnamemodify(file, ':p:h')
-    return 1
-  endif
-endfunction
-
-" }}}1
 " Initialization {{{1
 
-if !s:EmberCliDetect()
-  finish
-endif
-
-if !exists('g:loaded_projectionist')
-  runtime! plugin/projectionist.vim
-endif
+augroup emberPluginDetect
+  autocmd!
+  autocmd VimEnter * call ember#detect_cli_project()
+  autocmd BufEnter *.js,*.json,*.hbs call ember#detect_cli_project()
+augroup END
 
 " }}}1
 " Globally Available Public API {{{1
