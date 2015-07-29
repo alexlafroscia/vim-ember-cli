@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative "./spec_helper"
 
 describe "ember#get_module_name" do
   context "when the buffer is a test" do

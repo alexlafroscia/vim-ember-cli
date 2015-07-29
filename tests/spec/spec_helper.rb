@@ -7,7 +7,7 @@ Vimrunner::RSpec.configure do |config|
   config.start_vim do
     vim = Vimrunner.start
 
-    plugin_path = File.expand_path('../../', __FILE__)
+    plugin_path = File.expand_path('../../../', __FILE__)
     vim.add_plugin(plugin_path, 'plugin/ember.vim')
 
     vim
