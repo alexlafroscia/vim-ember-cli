@@ -51,15 +51,23 @@ function! ember#get_blueprints()
 endfunction
 
 " Given a type, return the directory name associated with it
-function! s:get_directory_for_type(type)
-  return a:type . 's'
+function! ember#get_directory_for_type(type)
+  if a:type =~ 'acceptance-test'
+    return 'tests/acceptance'
+  elseif a:type =~ 'component-test'
+    return 'tests/integration/components'
+  elseif a:type =~ '-test'
+    return 'tests/unit/' . a:type[0 : -6] . 's'
+  else
+    return 'app/' . a:type . 's'
+  endif
 endfunction
 
 " Given a type, return a list of the names of all the files of that type
 "   Example: arg -> 'controller'
 "   Return:  ['users/user']
 function! s:get_files_for_type(type)
-  let path = g:ember_root . '/app/' . s:get_directory_for_type(a:type)
+  let path = g:ember_root . '/' . ember#get_directory_for_type(a:type)
   let files = split(globpath(path, '**/*.js'), '\n')
   let relative_files = []
   for file in files
