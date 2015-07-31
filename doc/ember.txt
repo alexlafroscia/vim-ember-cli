@@ -158,6 +158,9 @@ http://www.ember-cli.com
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
 
+0.5.1
+  - Fix tab-completing the names of test files
+
 0.5.0
   - Add vim configuration options
   - Add ability to use `gf` with Ember's import syntax. Note: does
