@@ -6,6 +6,19 @@ if exists('g:autoloaded_ember') || &cp
 endif
 let g:autoloaded_ember = 1
 
+" Configure User Settings {{{1
+
+" Check if we should allow Vim configuration
+if !exists("g:ember_config_vim")
+  let g:ember_config_vim = 1
+endif
+
+if !exists("g:ember_config_vim_suffixesadd")
+  let g:ember_config_vim_suffixesadd = 1
+endif
+
+" }}}1
+
 " Utility Functions {{{1
 
 function! s:makeAndSwitch(command, ...)
@@ -164,7 +177,14 @@ function! ember#detect_cli_project(...)
   let file = findfile('.ember-cli', '.;')
   if !empty(file) && isdirectory(fnamemodify(file, ':p:h') . '/app')
     let g:ember_root = fnamemodify(file, ':p:h')
+    call ember#config_vim()
     return 1
+  endif
+endfunction
+
+function! ember#config_vim()
+  if g:ember_config_vim && g:ember_config_vim_suffixesadd
+    set suffixesadd+=.js
   endif
 endfunction
 

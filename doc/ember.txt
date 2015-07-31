@@ -6,7 +6,7 @@ License: Same terms as Vim itself (see |license|)
 ====================================================================
 CONTENTS                                              *ember-contents*
 
-    1. Usage ................ |ember-usage|
+    1. Settings ............. |ember-settings|
     2. Commands ............. |ember-commands|
     3. Bugs ................. |ember-bugs|
     4. Contributing ......... |ember-contributing|
@@ -15,9 +15,38 @@ CONTENTS                                              *ember-contents*
     7. Credits .............. |ember-credits|
 
 ====================================================================
-Section 1: Usage                                         *ember-usage*
+Section 1: Settings                                   *ember-settings*
 
+--------------------------------------------------------------------
+Section 1a: Vim Configuration                       *ember-vim-config*
 
+vim-ember-cli will automatically set some Vim configuration, if you
+allow it to.  By default, all configuration changes are enabled, but
+you can choose to turn any configuration change off individually, or
+disable all of them together.
+
+The possible configuration options are listed below, with their
+default values. Any of them can be overwritten in your own Vim
+configuration.
+
+Enable/Disable all configuration                *'g:ember_config_vim'*
+
+        Globally disable any configuration that vim-ember-cli might
+        do automatically. If set to `0`, no configuration will be
+        done.
+>
+        let g:ember_config_vim = 1
+<
+Configure `suffixesadd`               *'g:ember_config_vim_suffixesadd'*
+
+        Globally disable setting `suffixesadd`, which allows the `gf`
+        command to automatically check for a file extension when
+        trying to jump to a the file name under the cursor.  By
+        doing so, it allows `gf` to work with Ember's convention for
+        importing a file without the extension.
+>
+        let g:ember_config_vim_suffixesadd = 1
+<
 ====================================================================
 Section 2: Commands                                   *ember-commands*
 
@@ -128,6 +157,11 @@ http://www.ember-cli.com
 
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
+
+0.5.0
+  - Add vim configuration options
+  - Add ability to use `gf` with Ember's import syntax. Note: does
+    not work with NPM or Bower imports (yet)
 
 0.4.0
   - Add test setup
