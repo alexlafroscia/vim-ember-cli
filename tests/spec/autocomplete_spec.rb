@@ -3,7 +3,7 @@ require_relative "./spec_helper"
 describe "ember#complete_class_and_file" do
 
   def complete_type_and_file(input = '')
-    output = vim.command "echo ember#complete_class_and_file(0, '#{input}', 0)"
+    output = vim.command "echo ember#complete_type_and_files(0, '#{input}', 0)"
     parse_array output
   end
 

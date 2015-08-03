@@ -178,7 +178,7 @@ endfunction
 
 " Completion function for Ember types and, if the prompt already contains the
 " type, the file names associated with that type
-function! ember#complete_class_and_file(ArgLead, CmdLine, CursorPos)
+function! ember#complete_type_and_files(ArgLead, CmdLine, CursorPos)
   let types = ember#get_blueprints()
   let type = get(split(a:CmdLine, ' '), 1, '')
   if index(types, type) >= 0
