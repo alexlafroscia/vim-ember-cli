@@ -79,7 +79,7 @@ endfunction
 " Given a type, return a list of the names of all the files of that type
 "   Example: arg -> 'controller'
 "   Return:  ['users/user']
-function! s:get_files_for_type(type)
+function! s:get_files_for_type(type, includeDirectories)
   let path = g:ember_root . '/' . ember#get_directory_for_type(a:type)
   let extension_length = ''
   let files = []
@@ -99,13 +99,15 @@ function! s:get_files_for_type(type)
   for file in files
     " Add the file path to the array
     let filename = file[strlen(path . '/') : -extension_length - 1]
-    " Parse out the directory and add that to the array
-    let index = strridx(filename, '/')
-    if index != -1
-      let filename = filename[filename : index - 1]
-      let relative_files += [filename]
-    endif
     let relative_files += [file[strlen(path . '/') : -extension_length - 1]]
+    " Parse out the directory and add that to the array
+    if a:includeDirectories
+      let index = strridx(filename, '/')
+      if index != -1
+        let filename = filename[filename : index - 1]
+        let relative_files += [filename]
+      endif
+    endif
   endfor
   return relative_files
 endfunction
@@ -182,7 +184,17 @@ function! ember#complete_type_and_files(ArgLead, CmdLine, CursorPos)
   let types = ember#get_blueprints()
   let type = get(split(a:CmdLine, ' '), 1, '')
   if index(types, type) >= 0
-    let files = s:get_files_for_type(type)
+    let files = s:get_files_for_type(type, 0)
+    return s:completion_filter(files, a:ArgLead)
+  endif
+  return s:completion_filter(types, a:ArgLead)
+endfunction
+
+function! ember#complete_type_and_files_with_dir(ArgLead, CmdLine, CursorPos)
+  let types = ember#get_blueprints()
+  let type = get(split(a:CmdLine, ' '), 1, '')
+  if index(types, type) >= 0
+    let files = s:get_files_for_type(type, 1)
     return s:completion_filter(files, a:ArgLead)
   endif
   return s:completion_filter(types, a:ArgLead)
