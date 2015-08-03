@@ -9,11 +9,7 @@ describe 'ember.vim' do
 
   it 'can return a list of blueprints' do
     open_ember_app()
-    output = vim.command 'echo ember#get_blueprints()'
-    output = output[1...output.length - 1].split(",").map do |item|
-      item.strip!
-      item[1...item.length - 1]
-    end
+    output = parse_array vim.command('echo ember#get_blueprints()')
     expect(output.length).to eq(43)
     expect(output[0]).to eq('acceptance-test')
   end

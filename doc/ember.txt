@@ -158,6 +158,9 @@ http://www.ember-cli.com
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
 
+0.6.1
+  - Fix autocomplete for Handlebars files
+
 0.6.0
   - Add omnicomplete function in Handlebars files for component
     and helper names
