@@ -81,18 +81,31 @@ endfunction
 "   Return:  ['users/user']
 function! s:get_files_for_type(type)
   let path = g:ember_root . '/' . ember#get_directory_for_type(a:type)
-  let files = split(globpath(path, '**/*.js'), '\n')
+  let extension_length = ''
+  let files = []
+
+  " Get either the Handlebars files if we need to get the templates, else get
+  " the JavaScript files
+  if s:equal(a:type, 'template')
+    let files = split(globpath(path, '**/*.hbs'), '\n')
+    let extension_length = 4
+  else
+    let files = split(globpath(path, '**/*.js'), '\n')
+    let extension_length = 3
+  endif
+
+  " Filter the name of each file
   let relative_files = []
   for file in files
     " Add the file path to the array
-    let filename = file[strlen(path . '/') : -strlen('.js') - 1]
+    let filename = file[strlen(path . '/') : -extension_length - 1]
     " Parse out the directory and add that to the array
     let index = strridx(filename, '/')
     if index != -1
       let filename = filename[filename : index - 1]
       let relative_files += [filename]
     endif
-    let relative_files += [file[strlen(path . '/') : -strlen('.js') - 1]]
+    let relative_files += [file[strlen(path . '/') : -extension_length - 1]]
   endfor
   return relative_files
 endfunction
