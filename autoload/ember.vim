@@ -175,6 +175,27 @@ function! ember#complete_class_and_file(ArgLead, CmdLine, CursorPos)
   return s:completion_filter(types, a:ArgLead)
 endfunction
 
+function! ember#HandlebarsComplete(findstart, base)
+  if s:equal(a:findstart, 1)
+    return a:findstart
+  else
+    let matches = []
+    let components = s:get_files_for_type('component')
+    for component in components
+      if component =~ a:base
+        let matches += [{'word': component, 'kind': 'component'}]
+      endif
+    endfor
+    let helpers = s:get_files_for_type('helper')
+    for helper in helpers
+      if helper =~ a:base
+        let matches += [{'word': helper, 'kind': 'helper'}]
+      endif
+    endfor
+    return {'words': matches, 'refresh': 'always'}
+  endif
+endfunction
+
 " }}}1
 " Helper Functions {{{1
 
