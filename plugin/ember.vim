@@ -7,6 +7,7 @@ augroup emberPluginDetect
   autocmd!
   autocmd VimEnter * call ember#detect_cli_project()
   autocmd BufEnter *.js,*.json,*.hbs call ember#detect_cli_project()
+  autocmd BufEnter *hbs set omnifunc=ember#HandlebarsComplete
 augroup END
 
 " }}}1
