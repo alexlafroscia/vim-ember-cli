@@ -205,13 +205,13 @@ function! ember#HandlebarsComplete(findstart, base)
     return a:findstart
   else
     let matches = []
-    let components = s:get_files_for_type('component')
+    let components = s:get_files_for_type('component', 0)
     for component in components
       if component =~ a:base
         let matches += [{'word': component, 'kind': 'component'}]
       endif
     endfor
-    let helpers = s:get_files_for_type('helper')
+    let helpers = s:get_files_for_type('helper', 0)
     for helper in helpers
       if helper =~ a:base
         let matches += [{'word': helper, 'kind': 'helper'}]
