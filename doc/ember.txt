@@ -158,6 +158,10 @@ http://www.ember-cli.com
 ====================================================================
 Section 6: Changelog                                 *ember-changelog*
 
+0.6.2
+  - Fix errors thrown when reloading Vim config with plugin
+    installed
+
 0.6.1
   - Fix autocomplete for Handlebars files
   - Fix :EmberDestroy completing directories in results
