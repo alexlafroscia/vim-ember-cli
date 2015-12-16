@@ -1,7 +1,6 @@
 require_relative './spec_helper'
 
 describe 'ember#get_directory_for_type' do
-
   def directory_for(type)
     vim.command "echo ember#get_directory_for_type('#{type}')"
   end
@@ -21,11 +20,11 @@ describe 'ember#get_directory_for_type' do
   end
 
   it 'can correctly detect the directory for integration tests' do
-    expect(directory_for('component-test')).to eq('tests/integration/components')
+    dir = 'tests/integration/components'
+    expect(directory_for('component-test')).to eq(dir)
   end
 
   it 'can correctly detect the directory for acceptance tests' do
     expect(directory_for('acceptance-test')).to eq('tests/acceptance')
   end
 end
-

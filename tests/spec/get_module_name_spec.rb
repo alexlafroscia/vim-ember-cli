@@ -1,10 +1,10 @@
-require_relative "./spec_helper"
+require_relative './spec_helper'
 
-describe "ember#get_module_name" do
-  context "when the buffer is a test" do
-    context "that contains a regular test module" do
-      context "with an implicit name" do
-        it "returns the correct module name" do
+describe 'ember#get_module_name' do
+  context 'when the buffer is a test' do
+    context 'that contains a regular test module' do
+      context 'with an implicit name' do
+        it 'returns the correct module name' do
           write_file('controller-test.rb', <<-EOF)
             import Ember from 'ember;
 
@@ -19,8 +19,8 @@ describe "ember#get_module_name" do
         end
       end
 
-      context "with an explicit name" do
-        it "returns the correct module name" do
+      context 'with an explicit name' do
+        it 'returns the correct module name' do
           write_file('controller-test.rb', <<-EOF)
             import Ember from 'ember;
 
@@ -36,9 +36,9 @@ describe "ember#get_module_name" do
       end
     end
 
-    context "that contains a component test" do
-      context "with an implicit name" do
-        it "returns the correct module name" do
+    context 'that contains a component test' do
+      context 'with an implicit name' do
+        it 'returns the correct module name' do
           write_file('component-test.rb', <<-EOF)
             import Ember from 'ember;
 
@@ -53,8 +53,8 @@ describe "ember#get_module_name" do
         end
       end
 
-      context "with an explicit name" do
-        it "returns the correct module name" do
+      context 'with an explicit name' do
+        it 'returns the correct module name' do
           write_file('component-test.rb', <<-EOF)
             import Ember from 'ember;
 
@@ -70,9 +70,9 @@ describe "ember#get_module_name" do
       end
     end
 
-    context "that contains a model test" do
-      context "with an implicit name" do
-        it "returns the correct module name" do
+    context 'that contains a model test' do
+      context 'with an implicit name' do
+        it 'returns the correct module name' do
           write_file('model-test.rb', <<-EOF)
             import Ember from 'ember;
 
@@ -87,8 +87,8 @@ describe "ember#get_module_name" do
         end
       end
 
-      context "with an explicit name" do
-        it "returns the correct module name" do
+      context 'with an explicit name' do
+        it 'returns the correct module name' do
           write_file('model-test.rb', <<-EOF)
             import Ember from 'ember;
 
@@ -104,8 +104,8 @@ describe "ember#get_module_name" do
       end
     end
 
-    context "that contains an acceptance test" do
-      it "returns the correct module name" do
+    context 'that contains an acceptance test' do
+      it 'returns the correct module name' do
         write_file('acceptance-test.rb', <<-EOF)
           import Ember from 'ember;
 
