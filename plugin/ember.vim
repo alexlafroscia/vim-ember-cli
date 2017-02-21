@@ -16,6 +16,7 @@ command! -nargs=+ -complete=customlist,ember#complete_type_and_files_with_dir Em
 command! -nargs=+ -complete=customlist,ember#complete_type_and_files EmberDestroy call ember#Destroy(<f-args>)
 command! -nargs=0 -bang EmberTest call ember#Test(<bang>0)
 command! -nargs=0 EmberTestModule call ember#TestModule()
+command! -nargs=0 EmberTestRerun call ember#TestRerun()
 command! -nargs=* EmberServe call ember#Server(<f-args>)
 command! -nargs=* EmberBuild call ember#Build(<f-args>)
 command! -nargs=1 EmberInstall call ember#InstallAddon(<f-args>)

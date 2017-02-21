@@ -110,6 +110,11 @@ Section 2: Commands                                   *ember-commands*
         In this example, the name is 'Unit | Model | example'.
         This should be set by default, but if not, provide one.
 
+:EmberTestRerun                               *ember-:EmberTestRerun*
+
+        Reruns your last test run with vim-ember-cli.
+        Does not function with `:EmberTest!`.
+
 :EmberInstall [addon-name]                       *ember-:EmberInstall*
 
         Install an Ember addon using "ember install [addon-name]"

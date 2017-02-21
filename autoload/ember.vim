@@ -312,6 +312,7 @@ function! ember#Test(bang, ...)
   if a:bang
     call s:makeAndSwitch('ember test --serve')
   else
+    let s:last_spec = "ember test"
     call s:makeAndSwitch('ember test')
   endif
 endfunction
@@ -325,10 +326,17 @@ function! ember#TestModule()
       " Can we infer the module name from the file name?
       echom 'Could not find module name; make sure it is set'
     else
+      let s:last_spec = "ember test --module " . moduleName
       call s:makeAndSwitchTests("ember test --module ", moduleName)
     endif
   else
     echom 'Current buffer is not an Ember test'
+  endif
+endfunction
+
+function! ember#TestRerun()
+  if exists("s:last_spec")
+    call s:makeAndSwitch(s:last_spec)
   endif
 endfunction
 

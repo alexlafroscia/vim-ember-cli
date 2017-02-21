@@ -49,9 +49,18 @@ Destroy a `<type>` with `<name>`.  You can use tab-completion to get find files 
 
 Run the entire test suite.  Tests are run asynchronously through [`vim-dispatch`](https://github.com/tpope/vim-dispatch).
 
+Has a bang version, `:EmberTest!` which spawns a test server (`ember test
+--server`).
+
 ```
 :EmberTestModule
 ```
 
 When run from a buffer containing an Ember test, run only that test.
+
+```
+:EmberTestRerun
+```
+
+Rerun your last test command.  Does not function with `:EmberTest!`.
 
